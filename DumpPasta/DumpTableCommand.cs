@@ -18,6 +18,7 @@ namespace DumpPasta
             this.HasRequiredOption("d=", "Database name", v => DatabaseName = v);
             this.HasRequiredOption("t=", "Table name", v => TableName = v);
             this.HasRequiredOption("id=", "ID column to order by", v => IdColumn = v);
+            this.SkipsCommandSummaryBeforeRunning();
         }
 
         public string ConnectionString;
@@ -40,7 +41,7 @@ namespace DumpPasta
 
             EtlProcess etlProcess = new EmptyProcess();
             etlProcess.Register(reader);
-            etlProcess.Register(new TraceOperation());
+            etlProcess.Register(new WriteAsJsonArray(Console.Out));
 
             etlProcess.PipelineExecuter = new SingleThreadedPipelineExecuter();
 
