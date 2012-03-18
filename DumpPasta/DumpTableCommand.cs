@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
 using ManyConsole;
 using Rhino.Etl.Core;
 using Rhino.Etl.Core.ConventionOperations;
-using Rhino.Etl.Core.Operations;
 using Rhino.Etl.Core.Pipelines;
 
 namespace DumpPasta
@@ -40,7 +38,7 @@ namespace DumpPasta
                 Command = "SELECT * FROM " + TableName + " ORDER BY " + IdColumn
             };
 
-            EtlProcess etlProcess = new ScanProcess();
+            EtlProcess etlProcess = new EmptyProcess();
             etlProcess.Register(reader);
             etlProcess.Register(new TraceOperation());
 
@@ -52,32 +50,6 @@ namespace DumpPasta
                 Console.WriteLine(error.ToString());
 
             return 0;
-        }
-
-        public class ScanProcess : EtlProcess
-        {
-            public ScanProcess()
-            {
-            }
-
-            protected override void Initialize()
-            {
-            }
-        }
-
-        public class TraceOperation : AbstractOperation
-        {
-            public override IEnumerable<Row> Execute(IEnumerable<Row> rows)
-            {
-                foreach (var row in rows)
-                {
-                    Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(row));
-                    yield return row;
-                    Console.WriteLine();
-                }
-
-                yield break;
-            }
         }
     }
 }
