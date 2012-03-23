@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
@@ -24,7 +23,7 @@ namespace DumpPasta
 
             foreach (var row in rows)
             {
-                Console.WriteLine(separator + JsonConvert.SerializeObject(row));
+                _te.WriteLine(separator + JsonConvert.SerializeObject(row));
                 separator = ", ";
 
                 yield return row;

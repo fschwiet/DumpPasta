@@ -53,6 +53,9 @@
     <Reference Include="FileHelpers.ExcelStorage">
       <HintPath>..\packages\FileHelpers.2.0.0.0\lib\FileHelpers.ExcelStorage.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.Excel">
       <HintPath>..\packages\FileHelpers.2.0.0.0\lib\Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -70,14 +73,17 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.DSL">
-      <HintPath>..\packages\RhinoDSL.1.0.0\lib\Rhino.DSL.dll</HintPath>
+    <Reference Include="Rhino.DSL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CustomRhinoEtl\Rhino.DSL.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.Etl.Core">
-      <HintPath>..\packages\Rhino-Etl.1.1.0.0\lib\Rhino.Etl.Core.dll</HintPath>
+    <Reference Include="Rhino.Etl.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CustomRhinoEtl\Rhino.Etl.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Rhino.Etl.Dsl">
-      <HintPath>..\packages\Rhino-Etl.1.1.0.0\lib\Rhino.Etl.Dsl.dll</HintPath>
+    <Reference Include="Rhino.Etl.Dsl, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CustomRhinoEtl\Rhino.Etl.Dsl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
