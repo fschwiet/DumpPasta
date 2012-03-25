@@ -8,4 +8,5 @@ _ReSharper.*
 *.ncb
 *.aps
 *.suo
+*.user
 *.sln.cache
