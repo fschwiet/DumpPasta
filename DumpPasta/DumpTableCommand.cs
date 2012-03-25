@@ -22,7 +22,8 @@ namespace DumpPasta
             this.HasRequiredOption("d=", "Database name", v => DatabaseName = v);
             this.HasRequiredOption("t=", "Table name", v => TableName = v);
             this.HasRequiredOption("id=", "ID column to order by", v => IdColumn = v);
-            this.HasOption("f=", "File to write zip stream to.", v => OutputFile = v);
+            this.HasOption("f=", "File to write zip stream to (otherwise output is written to console).", v => OutputFile = v);
+            this.HasOption("z", "Compress the file using zip.", v => ZipFile = true);
             this.SkipsCommandSummaryBeforeRunning();
         }
 
@@ -31,6 +32,7 @@ namespace DumpPasta
         public string TableName;
         public string IdColumn;
         public string OutputFile;
+        public bool ZipFile = false;
 
         public override int Run(string[] remainingArguments)
         {
@@ -72,11 +74,18 @@ namespace DumpPasta
         TextWriter GetSelectedOutputWriter()
         {
             TextWriter tw = Console.Out;
+
             if (!string.IsNullOrEmpty(OutputFile))
             {
                 Console.WriteLine("Writing output to " + OutputFile);
-                tw = new StreamWriter(new GZipOutputStream(File.Open(OutputFile, FileMode.CreateNew)));
+                Stream output = File.Open(OutputFile, FileMode.CreateNew);
+
+                if (ZipFile)
+                    output = new GZipOutputStream(output);
+
+                tw = new StreamWriter(output);
             }
+
             return tw;
         }
     }
