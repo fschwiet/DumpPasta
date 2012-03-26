@@ -15,6 +15,7 @@ namespace DumpPasta
             this.IsCommand("json-to-xml", "Reads input stream as json, converting it to XML.");
             this.HasOption("r|root=", "Outer XML tag used to contain the document", v => RootTag = v);
             this.HasOption("i|inner=", "XML tag insert in the document to make some JSON representable as XML.", v => InnerTag = v);
+            this.SkipsCommandSummaryBeforeRunning();
         }
 
         public string RootTag = "xml";
