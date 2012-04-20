@@ -39,7 +39,7 @@ namespace DumpPasta
             var config = GetConnectionString();
 
             EtlProcess etlProcess = new EmptyProcess();
-            etlProcess.PipelineExecuter = new SingleThreadedPipelineExecuter();
+            etlProcess.PipelineExecuter = new SingleThreadedNonCachedPipelineExecuter();
 
             etlProcess.Register(new ConventionInputCommandOperation(config)
                 {

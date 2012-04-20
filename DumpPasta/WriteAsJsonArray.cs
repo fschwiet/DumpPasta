@@ -17,6 +17,8 @@ namespace DumpPasta
 
         public override IEnumerable<Row> Execute(IEnumerable<Row> rows)
         {
+            int i = 0;
+
             _te.WriteLine("[");
 
             var separator = "";
@@ -25,6 +27,11 @@ namespace DumpPasta
             {
                 _te.WriteLine(separator + JsonConvert.SerializeObject(row));
                 separator = ", ";
+
+                if (i++ % 200 == 0)
+                {
+                    _te.Flush();
+                }
 
                 yield return row;
             }
